@@ -1,0 +1,25 @@
+.header {
+  background-color: #F1F1F1;
+  text-align: center;
+  padding: 20px;
+}
+
+.mainContent {
+  background-color: lightblue;
+}
+
+.footer {
+  background-color: #F1E1F1;
+  text-align: center;
+  padding: 10px;
+}
+
+h1 {
+  color: black;
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
