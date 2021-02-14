@@ -1,5 +1,5 @@
-export const NavButton = ({ text, on, onClick }) => {
+export const NavButton = ({ text, disabled, onClick }) => {
   return (
-      <button onClick={onClick} disabled={on} >{text}</button>
+      <button onClick={onClick} disabled={disabled} >{text}</button>
   )
 }
