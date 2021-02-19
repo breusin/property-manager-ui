@@ -1,4 +1,3 @@
-import { NavButton } from "../pagination/NavButton"
 import { NavButtonStrip } from "../pagination/NavButtonStrip"
 import { PageIndicator } from "../pagination/PageIndicator"
 import { PageJump } from "../pagination/PageJump"

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useAsyncDebounce } from 'react-table'
 
-export const GlobalFilter = ({ filter, setFilter }) => {
+export const GlobalFilter = ({ filter, setFilter, count }) => {
   const [value, setValue] = useState(filter)
   const onChange = useAsyncDebounce(value => {
     setFilter(value || undefined)
@@ -15,7 +15,7 @@ export const GlobalFilter = ({ filter, setFilter }) => {
           setValue(e.target.value);
           onChange(e.target.value);
         }}
-      />
+      /> Found: {count}
     </span>
   )
 }

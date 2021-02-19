@@ -1,15 +1,15 @@
 .header {
-  background-color: #F1F1F1;
+  background-color: #ebe8dd;
   text-align: center;
   padding: 20px;
 }
 
 .mainContent {
-  background-color: lightblue;
+  background-color: #ebe8dd;
 }
 
 .footer {
-  background-color: #F1E1F1;
+  background-color: #ebe8dd;
   text-align: center;
   padding: 10px;
 }

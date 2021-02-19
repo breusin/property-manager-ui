@@ -1,4 +1,4 @@
-[{"id":1,"key":"natoque","value":"Gannicleff","server":"3.12.251.65","env":"New York","target":"nibh"},
+[{"id":1,"key":"natoque","value":"Gannicleff","server":"3.12.251.65","env":"New York","target":"nibh","description": "This is the description."},
   {"id":2,"key":"vestibulum","value":"Seagrave","server":"165.141.63.2","env":"California","target":"in"},
   {"id":3,"key":"lectus","value":"Jerrome","server":"136.145.170.188","env":"New York","target":"imperdiet"},
   {"id":4,"key":"orci","value":"Stripp","server":"111.222.252.213","env":"Florida","target":"ut"},

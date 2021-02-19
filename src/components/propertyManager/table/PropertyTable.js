@@ -1,16 +1,19 @@
-import React, { useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
+import ReactDOM from 'react-dom'
 import { useTable, usePagination, useFilters, useGlobalFilter, useRowSelect } from 'react-table'
-import MOCK_DATA from '../MOCK_DATA2.json'
-import { COLUMNS } from '../columns'
-import '../table.css'
+import { COLUMNS } from './columns'
+import '../../table.css'
 import { GlobalFilter } from "../filter/GlobalFilter"
 import { ColumnFilter } from "../filter/ColumnFilter"
-import { PageNavBar } from "../pagination/PageNavBar"
+import { PageNavBar } from "./pagination/PageNavBar"
 import { Checkbox } from "../selection/Checkbox"
 
-export const PropertyTable = () => {
+export const PropertyTable = ({tableData, setSelectedRows}) => {
+
   const columns = useMemo(() => COLUMNS, [])
-  const data = useMemo(() => MOCK_DATA, [])
+
+  const data = React.useMemo(() => tableData, [tableData]);
+
 
   const defaultColumn = React.useMemo(() => ({
       Filter: ColumnFilter
@@ -34,7 +37,8 @@ export const PropertyTable = () => {
     setPageSize,
     prepareRow,
     setGlobalFilter,
-    selectedFlatRows
+    selectedFlatRows,
+    visibleColumns
   } = useTable(
     {
       columns,
@@ -59,15 +63,18 @@ export const PropertyTable = () => {
     }
   )
 
+  useEffect(() => {
+    setSelectedRows(selectedFlatRows.map(row => row.original));
+  }, [setSelectedRows, selectedFlatRows]);
+
   const { globalFilter, pageIndex, pageSize } = state
 
-  const pageState = {
-      //gotoPage : gotoPage.bind(this)
-  }
+  var rc = 0;
 
   return (
     <>
-      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} count={rc}/>
       <PageNavBar pageIndex={pageIndex} gotoPage={gotoPage} pageCount={pageCount} pageSize={pageSize} setPageSize={setPageSize} />
       <table {...getTableProps()}>
         <thead>
@@ -86,8 +93,10 @@ export const PropertyTable = () => {
           {page.map(row => {
             prepareRow(row)
             return (
+
               <tr {...row.getRowProps()}>
                 {row.cells.map(cell => {
+                  rc++
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 })}
               </tr>
@@ -96,18 +105,9 @@ export const PropertyTable = () => {
         </tbody>
       </table>
       <PageNavBar pageIndex={pageIndex} gotoPage={gotoPage} pageCount={pageCount} pageSize={pageSize} setPageSize={setPageSize} />
-      <button>Edit</button>
-      <pre>
-              <code>
-                {JSON.stringify(
-                  {
-                    selectedFlatRows: selectedFlatRows.map(row => row.original)
-                  },
-                  null,
-                  2
-                )}
-              </code>
-            </pre>
     </>
   )
 }
+
+export default PropertyTable
+
